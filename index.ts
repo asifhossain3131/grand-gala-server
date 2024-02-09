@@ -45,6 +45,16 @@ async function run() {
           res.status(500).send({ success: false, error: 'Internal Server Error' });
         }
       })
+      
+      app.get('/allServices/:serviceId',async(req:Request,res:Response)=>{
+        try {
+          const {serviceId}=req.params
+          const result=await allServiesCollection.findOne({_id: new ObjectId(serviceId)})
+          res.status(200).send({success:true,message:'data found successfully',data:result})
+        } catch (error) {
+          console.log(error)
+        }
+      })
 
       app.post('/allServices',async(req:Request,res:Response)=>{
         try {
@@ -59,12 +69,13 @@ async function run() {
 
       app.put('/allServices',async(req:Request,res:Response)=>{
         try {
-            const {serviceId,serviceTitle,serviceImg,providedServices}=req.body
+            const {serviceId,serviceTitle,serviceImg,providedServices,serviceDescription}=req.body
             const result=await allServiesCollection.updateOne({_id:new ObjectId(serviceId)},{
                 $set:{
                     service_title:serviceTitle,
                     service_img:serviceImg,
-                    services_in_array:providedServices
+                    services_in_array:providedServices,
+                    service_description:serviceDescription
                 }
             },{upsert:true})
             res.status(200).send({success:true,message:'successfully updated data'})
@@ -129,7 +140,7 @@ async function run() {
         }
     })
       
-    app.delete('/allServices',async(req:Request,res:Response)=>{
+    app.delete('/allEvents',async(req:Request,res:Response)=>{
         try {
             const {eventId}=req.body
             const result=await allEventsCollection.deleteOne({_id:new ObjectId(eventId)})
