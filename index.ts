@@ -33,6 +33,7 @@ async function run() {
      const database=client.db('grandGala')
      const allServiesCollection=database.collection('allServices')
      const allEventsCollection=database.collection('allEvents')
+     const allBlogsCollection=database.collection('blogs')
 
     
     //  service related 
@@ -151,6 +152,16 @@ async function run() {
         }
       })
 
+
+      // blogs related 
+      app.get('/blogs',async(req,res)=>{
+        try {
+          const result=await allBlogsCollection.find().toArray()
+          res.status(200).send({success:true,message:'successfully fetched blogs',data:result})
+        } catch (error) {
+          console.log(error)
+        }
+      })
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
