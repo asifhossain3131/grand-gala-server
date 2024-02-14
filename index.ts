@@ -117,7 +117,7 @@ async function run() {
             res.status(200).send({ success: true, data: result });
           } catch (error) {
             console.error(error);
-            res.status(500).send({ success: false, error: 'Internal Server Error' });
+            res.status(500).send({ success: false, error: 'Internal Server Error. Please try again' });
           }
     })
 
