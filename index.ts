@@ -154,7 +154,7 @@ async function run() {
 
 
       // blogs related 
-      app.get('/blogs',async(req,res)=>{
+      app.get('/blogs',async(req:Request,res:Response)=>{
         try {
           const result=await allBlogsCollection.find().toArray()
           res.status(200).send({success:true,message:'successfully fetched blogs',data:result})

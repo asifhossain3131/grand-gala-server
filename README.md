@@ -33,9 +33,9 @@ To use the project on the local environment, you will need to follow the below s
 
 #### Live Demo
 
- live demo [GrandGala](https://your-live-demo-link.com).
+ live demo [GrandGala](https://grandgala.web.app/).
 
-#### Server Code
+#### Client Code
 
-The client-side code is available [here](https://github.com/your-username/your-project-server).
+The client-side code is available [here](https://github.com/programming-hero-web-course1/l2-b2-assignment-5-frontend-asifhossain3131).
 
